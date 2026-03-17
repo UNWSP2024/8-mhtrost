@@ -1,0 +1,32 @@
+BEGIN course_info
+
+    CREATE empty dictionary called course_dict
+
+    LOOP forever
+        PROMPT user to enter course ID (or 'done' to finish)
+        STORE input in course_id
+
+        IF course_id is 'done' (case insensitive)
+            EXIT loop
+        ENDIF
+
+        PROMPT user to enter course name
+        STORE input in course_name
+
+        ADD course_id and course_name to course_dict
+    END LOOP
+
+    PROMPT user to enter a subject to search for (example: 'COS')
+    STORE input in subject
+
+    DISPLAY "Courses in the subject", subject
+
+    FOR EACH course_id and course_name in course_dict
+        IF course_id starts with subject
+            DISPLAY course_id and course_name
+        ENDIF
+    END FOR
+
+END course_info
+
+CALL course_info
